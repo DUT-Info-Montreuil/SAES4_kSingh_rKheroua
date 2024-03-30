@@ -4,7 +4,6 @@ tournois = connexion.tournois
 
 
 
-
 def inserer_tournoi( nom, date, nb_tables, duree, format, lieu, description, pwd, salle):
     tournois.insert_one(  {
         "nom": nom,
