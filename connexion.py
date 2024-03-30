@@ -14,4 +14,3 @@ scores = database["scores"]
 poules = database["poules"]
 classement = database["classement"]
 
-print(tournois.find_one())
