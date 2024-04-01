@@ -22,7 +22,7 @@ def creer_une_equipe():
     return jsonify({"message": "Équipe créée avec succès"})
 
 @equipe_bp.route('/equipes/<string:_id>', methods=['GET'])
-def obtenir_une_equipe(_id):
+def rechercher_une_equipe(_id):
     equipe = rechercher_equipe(_id)
     if equipe:
         return jsonify(equipe)

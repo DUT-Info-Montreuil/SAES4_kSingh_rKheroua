@@ -1,6 +1,6 @@
 from fonctions.connexion import equipes
 from bson import ObjectId
-from joueurs import inserer_joueur
+from fonctions.joueurs import inserer_joueur
 
 
 def inserer_equipe(nomEquipes,tournois, nom1, prenom1, age1, niveau1, email1, nom2, prenom2, age2, niveau2, email2):

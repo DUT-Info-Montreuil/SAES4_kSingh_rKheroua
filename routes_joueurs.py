@@ -19,7 +19,7 @@ def creer_un_joueur():
 
 
 @joueur_bp.route('/rechercher/<string:_id>', methods=['GET'])
-def trouver_un_joueur(_id):
+def rechercher_un_joueur(_id):
     joueur = rechercher_joueur(_id)
     joueurjson = json_util.dumps(joueur)
     if joueurjson:
