@@ -3,10 +3,22 @@ from fonctions.equipes import inserer_equipe, rechercher_equipe, modifier_equipe
 
 equipe_bp = Blueprint('equipe_bp', __name__)
 
-@equipe_bp.route('/equipes', methods=['POST'])
+@equipe_bp.route('/cree', methods=['POST'])
 def creer_une_equipe():
-    data = request.get_json()
-    inserer_equipe(**data)
+    data = request.json  
+    nomEquipes = data.get("nomEquipes")
+    tournois = data.get("tournois")
+    nom1 = data.get("nom1")
+    prenom1 = data.get("prenom1")
+    age1 = data.get("age1")
+    niveau1 = data.get("niveau1")
+    email1 = data.get("email1")
+    nom2 = data.get("nom2")
+    prenom2 = data.get("prenom2")
+    age2 = data.get("age2")
+    niveau2 = data.get("niveau2")
+    email2 = data.get("email2")
+    inserer_equipe(nomEquipes, tournois, nom1, prenom1, age1, niveau1, email1, nom2, prenom2, age2, niveau2, email2)
     return jsonify({"message": "Équipe créée avec succès"})
 
 @equipe_bp.route('/equipes/<string:_id>', methods=['GET'])

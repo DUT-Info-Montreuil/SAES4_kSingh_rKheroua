@@ -15,7 +15,7 @@ db.tournois.insertOne(
         "nom": "Tournoi de Volleyball",
         "date": "2024-07-15",
         "nbTables": 5,
-        "durée": 3 ,
+        "duree": 3 ,
         "format": "solo",
         "lieu": "Centre sportif XYZ",
         "description": "Tournoi annuel de volleyball amateur.",
@@ -57,7 +57,7 @@ db.joueurs.insertMany([
     }
 ])  
   
-db.equipes.insertMany( 
+db.equipes.insertMany( [ 
     {
         "_id": ObjectId("60a350bf8e3abf1050fdd6ea"),
         "nom": "Équipe A",
@@ -68,7 +68,7 @@ db.equipes.insertMany(
         "nom": "Équipe B",
         "membres": [ ObjectId("60a350bf8e3abf1050fdd6e3") ]
     }
-)  
+])  
  
 db.matchs.insertMany([ 
     {
@@ -147,3 +147,20 @@ db.classement.insertMany([
         "pointsMarques": 350
     }
 ]);
+
+
+
+db.tournois.insertOne ({
+    "nom": "tournoi iut",
+    "date": "03-04-2002",
+    "nbTables": 3,
+    "durée": 3,
+    "format": "solo",
+    "lieu": "france",
+    "description": "dfsdsdf",
+    "pwd": "ggg",
+    "Joueurs": [],
+    "matches": [],
+    "poules": [],
+    "Salle": "dsgsdg"
+})

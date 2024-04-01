@@ -1,6 +1,5 @@
-import connexion
-
-tournois = connexion.tournois
+from fonctions.connexion import tournois
+from bson import ObjectId
 
 
 
@@ -9,7 +8,7 @@ def inserer_tournoi( nom, date, nb_tables, duree, format, lieu, description, pwd
         "nom": nom,
         "date": date,
         "nbTables": nb_tables,
-        "durée": duree,
+        "duree": duree,
         "format": format,
         "lieu": lieu,
         "description": description,
@@ -23,19 +22,19 @@ def inserer_tournoi( nom, date, nb_tables, duree, format, lieu, description, pwd
 
 
 def recherche_tournoi(_id):
-    result = tournois.find_one({"_id": _id})
-    print(result)     
-
+    tournoi = tournois.find_one({"_id": ObjectId(_id)})
+    return tournoi
+    
 
 def modifier_tournoi(_id, data):
-    tournois.update_one({"_id": _id}, {"$set": data})
+    tournois.update_one({"_id": ObjectId(_id)}, {"$set": data})
 
 
 def supprimer_tournoi(_id, pwd):
-    tournoi = tournois.find_one({"_id": _id})
+    tournoi = tournois.find_one({"_id": ObjectId(_id)})
     if tournoi:
         if tournoi["pwd"] == pwd:
-            tournois.delete_one({"_id": _id})
+            tournois.delete_one({"_id": ObjectId(_id)})
             print("Vous avez bien supprimé le tournoi", tournoi["nom"])
         else:
             print("Mot de passe incorrect pour supprimer le tournoi")
@@ -43,3 +42,9 @@ def supprimer_tournoi(_id, pwd):
         print("Aucun tournoi trouvé avec l'ID", _id)
 
 
+def recherche_nom_tournoi(nom):
+    tournoi = tournois.find_one({"nom": nom})
+    if tournoi:
+        return str(tournoi["_id"])
+    else:
+        print("Aucun tournoi avec ce nom")

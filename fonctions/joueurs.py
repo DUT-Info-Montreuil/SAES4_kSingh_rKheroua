@@ -1,12 +1,11 @@
-import connexion
+from fonctions.connexion import joueurs
+from bson import ObjectId
 
-joueurs = connexion.joueurs
 
 
 
 def recherche_joueur(_id):
-    result = joueurs.find_one({"_id": _id})
-    print(result)
+    result = joueurs.find_one({"_id": ObjectId(_id)})
     return result
 
     
@@ -17,21 +16,21 @@ def inserer_joueur(nom, prenom, age, niveau, email, tournois):
         "âge": age,
         "niveau": niveau,
         "email": email,
-        "Tournois": tournois
+        "Tournois": ObjectId(tournois)
     }
     )
 
 
 def rechercher_joueur(_id):
-    joueur = joueurs.find_one({"_id": _id})
+    joueur = joueurs.find_one({"_id": ObjectId(_id)})
     return joueur
 
 
 def modifier_joueur(_id, data):
-    joueurs.update_one({"_id": _id}, {"$set": data})
+    joueurs.update_one({"_id": ObjectId(_id)}, {"$set": data})
 
 
 def supprimer_joueur(_id):
-    joueurs.delete_one({"_id": _id})
+    joueurs.delete_one({"_id": ObjectId(_id)})
     
 
