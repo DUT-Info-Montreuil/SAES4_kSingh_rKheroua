@@ -48,3 +48,8 @@ def recherche_nom_tournoi(nom):
         return str(tournoi["_id"])
     else:
         print("Aucun tournoi avec ce nom")
+
+
+def rejoindre_tournoi(idTournoi, idJoueur):
+    tournois.update_one({"_id": ObjectId(idTournoi)}, {"$addToSet": {"Joueurs":idJoueur}})
+

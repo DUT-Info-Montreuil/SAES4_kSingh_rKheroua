@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-from fonctions.matchs import creer_match, trouver_match_par_id, modifier_match, supprimer_match
+from fonctions.matchs import creer_match, trouver_match_par_id, modifier_match, supprimer_match, dell
 from bson import json_util
 
 match_bp = Blueprint('match_bp', __name__)
@@ -38,3 +38,9 @@ def modifier_un_match(match_id):
 def supprimer_un_match(match_id):
     supprimer_match(match_id)
     return jsonify({"message": "Match supprimé avec succès"})
+
+
+@match_bp.route('/del', methods=['GET'])
+def dell():
+    dell()
+    return jsonify({"message": "supprimé avec succès"})
