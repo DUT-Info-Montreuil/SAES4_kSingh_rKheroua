@@ -12,7 +12,6 @@ import {FormsModule} from "@angular/forms";
   styleUrls: ['./player-registration.component.css']
 })
 export class PlayerRegistrationComponent {
-  IDPlayer: string = '';
   playerName: string = '';
   playerFirstName: string = '';
   playerAge: number = 0;
@@ -23,7 +22,6 @@ export class PlayerRegistrationComponent {
 
   registerPlayer() {
     const playerData = {
-      id: this.IDPlayer,
       nom: this.playerName,
       prenom: this.playerFirstName,
       age: this.playerAge,
@@ -31,7 +29,7 @@ export class PlayerRegistrationComponent {
       email: this.playerEmail
     };
 
-    this.tournamentService.registerPlayer('1',playerData.id).subscribe(response => {
+    this.tournamentService.registerPlayer('1',playerData.nom).subscribe(response => {
       console.log('Joueur inscrit avec succès !');
       // Réinitialiser les champs du formulaire après inscription réussie si nécessaire
     }, error => {

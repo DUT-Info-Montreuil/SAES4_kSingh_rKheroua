@@ -12,6 +12,6 @@ export const routes: Routes = [
   { path: 'player-registration', component: PlayerRegistrationComponent },
   { path: 'player-unregistration', component: PlayerUnregistrationComponent },
   // Ajoutez d'autres routes au besoin
-  { path: '', redirectTo: '/tournaments', pathMatch: 'full' }
+
 ];
 

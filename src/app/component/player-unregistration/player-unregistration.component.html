@@ -1,5 +1,4 @@
 <style>
-  /* player-unregistration.component.css */
 
   .container {
     padding: 20px;
@@ -31,7 +30,7 @@
 <div class="container">
   <h1>Desinscription d'un Joueur</h1>
   <ul>
-    <li *ngFor="let player of registeredPlayers">
+    <li *ngFor="let player of loadRegisteredPlayers()">
       {{ player.name }} - {{ player.email }}
       <button (click)="unregisterPlayer(player.id)">Desinscrire</button>
     </li>
