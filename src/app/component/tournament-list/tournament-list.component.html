@@ -1,0 +1,55 @@
+<style>
+  .container {
+    padding: 20px;
+  }
+
+  .tournament-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 20px;
+  }
+
+  .tournament-card {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 5px;
+  }
+
+  .buttons {
+    margin-top: 10px;
+  }
+
+  button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+
+  button:hover {
+    background-color: #0056b3;
+  }
+
+</style>
+<div class="container">
+  <h1>Liste des Tournois</h1>
+  <div class="tournament-list">
+    <div class="tournament-card" *ngFor="let tournament of tournaments">
+      <h3>{{ tournament.nom }}</h3>
+      <p>Date: {{ tournament.date }}</p>
+      <p>Lieu: {{ tournament.lieu }}</p>
+      <p>Format: {{ tournament.format }}</p>
+      <p>Description: {{ tournament.description }}</p>
+      <div class="buttons">
+        <button (click)="register(tournament._id)">Inscription</button>
+        <button (click)="unregister(tournament._id)">Desinscription</button>
+        <button (click)="launch(tournament._id)">Lancer Tournoi</button>
+        <button (click)="close(tournament._id)">Fermer Tournoi</button>
+      </div>
+    </div>
+  </div>
+</div>

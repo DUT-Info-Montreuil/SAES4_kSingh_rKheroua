@@ -1,0 +1,41 @@
+<style>
+  /* player-registration.component.css */
+
+  .container {
+    padding: 20px;
+  }
+
+  input, button {
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: #0056b3;
+  }
+</style>
+<div class="container">
+  <h1>Inscription d'un Joueur</h1>
+  <form (submit)="registerPlayer()">
+    <label>Nom:</label>
+    <input type="text" [(ngModel)]="playerName" name="playerName" required>
+    <label>Prenom:</label>
+    <input type="text" [(ngModel)]="playerFirstName" name="playerFirstName" required>
+    <label>Age:</label>
+    <input type="number" [(ngModel)]="playerAge" name="playerAge" required>
+    <label>Niveau:</label>
+    <input type="text" [(ngModel)]="playerLevel" name="playerLevel" required>
+    <label>Email:</label>
+    <input type="email" [(ngModel)]="playerEmail" name="playerEmail" required>
+    <button type="submit">Inscrire</button>
+  </form>
+</div>
