@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request
-from fonctions.tournoi import inserer_tournoi,recherche_tournoi,modifier_tournoi,supprimer_tournoi,recherche_nom_tournoi
+from fonctions.tournoi import inserer_tournoi,recherche_tournoi,modifier_tournoi,supprimer_tournoi,recherche_nom_tournoi, rechercher_tout_les_tournoi
 from bson import json_util
 
 
@@ -49,10 +49,16 @@ def supprimer_un_tournoi(_id, pwd):
         return jsonify({"message": "Tournoi supprimé avec succès"})
 
 
-@tournoi_bp.route('/test/<string:nom>', methods=['GET'])
+@tournoi_bp.route('/recherche_nom/<string:nom>', methods=['GET'])
 def recherche_tournoi_par_nom(nom):
     id_tournoi = recherche_nom_tournoi(nom)
     if id_tournoi:
         return jsonify({"_id": id_tournoi})
     else:
         return jsonify({"message": "Aucun tournoi avec ce nom"})
+
+@tournoi_bp.route('/recherche_tout/', methods=['GET'])
+def recherche_tout_les_tournoi():
+    t = rechercher_tout_les_tournoi()
+    return jsonify(t)
+

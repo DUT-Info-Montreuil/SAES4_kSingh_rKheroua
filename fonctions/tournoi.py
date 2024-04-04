@@ -53,3 +53,16 @@ def recherche_nom_tournoi(nom):
 def rejoindre_tournoi(idTournoi, idJoueur):
     tournois.update_one({"_id": ObjectId(idTournoi)}, {"$addToSet": {"Joueurs":idJoueur}})
 
+
+def rechercher_tout_les_tournoi():
+    tournoi = tournois.find()
+    resultat = []
+    for t in tournoi:
+        resultat.append({
+            "nom": t["nom"],
+            "date": t["date"],
+            "lieu": t["lieu"],
+            "description": t["description"]
+        })
+
+    return resultat
