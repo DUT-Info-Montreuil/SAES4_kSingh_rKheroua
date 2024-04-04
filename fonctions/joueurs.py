@@ -8,6 +8,7 @@ def recherche_joueur(_id):
     result = joueurs.find_one({"_id": ObjectId(_id)})
     return result
 
+
     
 def inserer_joueur(nom, prenom, age, niveau, email, tournois):
     j = joueurs.insert_one({
