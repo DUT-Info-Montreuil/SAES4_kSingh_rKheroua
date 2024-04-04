@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
 import {
   RouterLink,
   RouterLinkActive,
   RouterOutlet
 } from '@angular/router';
+import { HttpClientModule} from "@angular/common/http";
 import {
   NgbDropdown,
   NgbDropdownItem,
@@ -19,10 +19,10 @@ import {
   templateUrl: './app.component.html',
   imports: [RouterOutlet, RouterLink, RouterLinkActive,
     NgbNavItem, NgbNavLink, NgbNav,
-    NgbDropdown, NgbDropdownMenu, NgbDropdownItem,HttpClientModule],
+    NgbDropdown, NgbDropdownMenu, NgbDropdownItem, HttpClientModule],
   standalone: true,
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app-ng17';
+  title = 's4Front';
 }

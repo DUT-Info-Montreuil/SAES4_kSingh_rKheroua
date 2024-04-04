@@ -1,20 +1,24 @@
 import { Component, OnInit } from '@angular/core';
-import { TournamentApiService } from '../../service/api-management/tournament-api.service';
-import { PlayerRegistrationComponent } from '../player-registration/player-registration.component';
-import { PlayerUnregistrationComponent } from '../player-unregistration/player-unregistration.component';
+import { CommonModule } from '@angular/common';
+import {RouterModule} from "@angular/router";
+import { TournamentApiService } from '../../tournament-api.service';
+//import { PlayerRegistrationComponent } from '../player-registration/player-registration.component';
+//import { PlayerUnregistrationComponent } from '../player-unregistration/player-unregistration.component';
 
 @Component({
   selector: 'app-tournament-list',
   templateUrl: './tournament-list.component.html',
-  styleUrls: ['./tournament-list.component.css']
+  standalone: true,
+  imports: [ CommonModule, RouterModule ]
 })
+
 export class TournamentListComponent implements OnInit {
   tournaments: any[] = [];
 
   constructor(
-    private tournamentService: TournamentApiService,
-    private playerRegistrationComponent: PlayerRegistrationComponent,
-    private playerUnregistrationComponent: PlayerUnregistrationComponent
+    private tournamentService: TournamentApiService
+    //private playerRegistrationComponent: PlayerRegistrationComponent,
+    //private playerUnregistrationComponent: PlayerUnregistrationComponent
   ) { }
 
   ngOnInit(): void {
@@ -22,15 +26,16 @@ export class TournamentListComponent implements OnInit {
   }
 
   getTournaments() {
-    this.tournamentService.getTournaments().subscribe((data: any) => {
+    this.tournamentService.getTournaments().subscribe((data: any[]) => {
       this.tournaments = data;
     });
   }
 
-  register(tournamentId: string) {//
+  register(tournamentId: string) {
+
   }
 
-  unregister(tournamentId: string) {//
+  unregister(tournamentId: string) {
   }
 
   launch(tournamentId: string) {

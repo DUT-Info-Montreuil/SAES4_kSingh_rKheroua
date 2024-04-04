@@ -30,7 +30,7 @@
 <div class="container">
   <h1>Desinscription d'un Joueur</h1>
   <ul>
-    <li *ngFor="let player of loadRegisteredPlayers()">
+    <li *ngFor="let player of registeredPlayer">
       {{ player.name }} - {{ player.email }}
       <button (click)="unregisterPlayer(player.id)">Desinscrire</button>
     </li>

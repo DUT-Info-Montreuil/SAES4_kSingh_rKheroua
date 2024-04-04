@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { TournamentApiService } from '../../service/api-management/tournament-api.service';
+import { TournamentApiService } from '../../tournament-api.service';
 
 @Component({
   selector: 'app-create-tournament',

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { TournamentApiService } from '../../service/api-management/tournament-api.service';
+import { TournamentApiService } from '../../tournament-api.service';
 import {FormsModule} from "@angular/forms";
 
 @Component({

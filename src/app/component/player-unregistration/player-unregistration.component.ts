@@ -1,16 +1,20 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import {RouterModule} from "@angular/router";
 import { ActivatedRoute } from '@angular/router';
-import { TournamentApiService } from '../../service/api-management/tournament-api.service';
+import { TournamentApiService } from '../../tournament-api.service';
+import {platform} from "node:os";
 
 @Component({
   selector: 'app-player-unregistration',
   templateUrl: './player-unregistration.component.html',
   standalone: true,
-  styleUrls: ['./player-unregistration.component.css']
+  imports: [ CommonModule, RouterModule ]
+
 })
 export class PlayerUnregistrationComponent implements OnInit {
   tournamentId: string = ''; // Variable pour stocker l'ID du tournoi
-
+  registeredPlayer: any[] = [];
   constructor(
     private route: ActivatedRoute,
     private tournamentApiService: TournamentApiService
@@ -26,8 +30,8 @@ export class PlayerUnregistrationComponent implements OnInit {
   loadRegisteredPlayers() {
     // Utilisez this.tournamentId pour récupérer les joueurs inscrits à ce tournoi
     this.tournamentApiService.getRegisteredPlayers(this.tournamentId).subscribe(
-      (players: any[]) => {
-        // Traitez la liste des joueurs inscrits ici
+      (data: any[]) => {
+        this.registeredPlayer = data
       },
       (error) => {
         console.error('Une erreur s\'est produite lors du chargement des joueurs inscrits :', error);
@@ -48,4 +52,6 @@ export class PlayerUnregistrationComponent implements OnInit {
       }
     );
   }
+
+  protected readonly platform = platform;
 }

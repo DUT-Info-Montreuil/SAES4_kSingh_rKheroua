@@ -6,20 +6,16 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class TournamentApiService {
-  private baseUrl = 'http://127.0.0.1:5000'; // Remplacez yourport par le port de votre API
+  private baseUrl = 'http://127.0.0.1:5000';
 
   constructor(private http: HttpClient) { }
-
-  // Méthodes pour interagir avec l'API
-
-  // Créer un tournoi
   createTournament(tournamentData: any): Observable<any> {
     return this.http.post(`${this.baseUrl}/cree`, tournamentData);
   }
 
   // Récupérer tous les tournois
   getTournaments(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/tournaments`);
+    return this.http.get(`${this.baseUrl}/tournois/recherche_tout/`);
   }
 
   // Récupérer un tournoi par son ID
