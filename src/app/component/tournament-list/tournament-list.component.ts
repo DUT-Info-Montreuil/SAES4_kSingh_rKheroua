@@ -1,24 +1,24 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import {RouterModule} from "@angular/router";
+import { CommonModule } from '@angular/common';import {
+  RouterLink,
+  RouterLinkActive,
+  RouterOutlet, Router,RouterModule
+} from '@angular/router';
 import { TournamentApiService } from '../../tournament-api.service';
-//import { PlayerRegistrationComponent } from '../player-registration/player-registration.component';
-//import { PlayerUnregistrationComponent } from '../player-unregistration/player-unregistration.component';
 
 @Component({
   selector: 'app-tournament-list',
   templateUrl: './tournament-list.component.html',
   standalone: true,
-  imports: [ CommonModule, RouterModule ]
+  imports: [ CommonModule, RouterModule, RouterLink,RouterLinkActive,RouterOutlet]
 })
 
 export class TournamentListComponent implements OnInit {
   tournaments: any[] = [];
 
   constructor(
+    private router: Router,
     private tournamentService: TournamentApiService
-    //private playerRegistrationComponent: PlayerRegistrationComponent,
-    //private playerUnregistrationComponent: PlayerUnregistrationComponent
   ) { }
 
   ngOnInit(): void {
@@ -26,35 +26,28 @@ export class TournamentListComponent implements OnInit {
   }
 
   getTournaments() {
+    console.log("Liste des tournois")
     this.tournamentService.getTournaments().subscribe((data: any[]) => {
       this.tournaments = data;
     });
   }
 
   register(tournamentId: string) {
-
+    console.log("ouverture inscription")
+    this.router.navigate(['player-registration/', tournamentId]);
   }
 
   unregister(tournamentId: string) {
+    console.log("ouverture désinscription")
+    this.router.navigate(['player-unregistration/', tournamentId]);
   }
 
   launch(tournamentId: string) {
-    this.tournamentService.launchTournament(tournamentId).subscribe(() => {
-      console.log('Tournament launched successfully!');
-      // Ajoutez ici la logique de mise à jour de l'interface utilisateur si nécessaire
-    }, error => {
-      console.error('Error launching tournament:', error);
-      // Gérer les erreurs de lancement du tournoi ici
-    });
+  console.log("lancement du tournoi")
+    this.tournamentService.launchTournament(tournamentId)
   }
 
   close(tournamentId: string) {
-    this.tournamentService.closeTournament(tournamentId).subscribe(() => {
-      console.log('Tournament closed successfully!');
-      // Ajoutez ici la logique de mise à jour de l'interface utilisateur si nécessaire
-    }, error => {
-      console.error('Error closing tournament:', error);
-      // Gérer les erreurs de fermeture du tournoi ici
-    });
+
   }
 }

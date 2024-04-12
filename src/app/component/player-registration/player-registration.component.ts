@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { TournamentApiService } from '../../tournament-api.service';
 import {FormsModule} from "@angular/forms";
 
@@ -8,8 +9,7 @@ import {FormsModule} from "@angular/forms";
   standalone: true,
   imports: [
     FormsModule
-  ],
-  styleUrls: ['./player-registration.component.css']
+  ]
 })
 export class PlayerRegistrationComponent {
   playerName: string = '';
@@ -18,23 +18,25 @@ export class PlayerRegistrationComponent {
   playerLevel: string = '';
   playerEmail: string = '';
 
-  constructor(private tournamentService: TournamentApiService) { }
+  constructor(private tournamentService: TournamentApiService, private route: ActivatedRoute) { }
 
+  ngOnInit(): void {
+
+  }
   registerPlayer() {
     const playerData = {
       nom: this.playerName,
       prenom: this.playerFirstName,
       age: this.playerAge,
       niveau: this.playerLevel,
-      email: this.playerEmail
+      email: this.playerEmail,
+      tournois: this.route.snapshot.params['tournamentId']
     };
 
-    this.tournamentService.registerPlayer('1',playerData.nom).subscribe(response => {
+    this.tournamentService.registerPlayer(playerData).subscribe(response => {
       console.log('Joueur inscrit avec succès !');
-      // Réinitialiser les champs du formulaire après inscription réussie si nécessaire
     }, error => {
       console.error('Erreur lors de l\'inscription du joueur :', error);
-      // Gérer les erreurs d'inscription du joueur ici
     });
   }
 }

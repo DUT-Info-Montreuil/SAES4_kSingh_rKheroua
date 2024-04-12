@@ -3,12 +3,17 @@ import { TournamentListComponent } from './component/tournament-list/tournament-
 import { TournamentDetailComponent } from './component/tournament-detail/tournament-detail.component';
 import { PlayerRegistrationComponent } from './component/player-registration/player-registration.component';
 import { PlayerUnregistrationComponent } from './component/player-unregistration/player-unregistration.component';
+import {CreateTournamentComponent} from "./component/create-tournament/create-tournament.component";
+import{LaunchTournamentComponent} from "./component/launch-tournament/launch-tournament.component";
+import{CloseTournamentComponent} from "./component/close-tournament/close-tournament.component";
 
 export const routes: Routes = [
   { path: 'tournaments', component: TournamentListComponent },
   { path: 'tournament/:id', component: TournamentDetailComponent },
-  { path: 'player-registration', component: PlayerRegistrationComponent },
-  { path: 'player-unregistration', component: PlayerUnregistrationComponent },
-
+  { path: 'player-registration/:id', component: PlayerRegistrationComponent },
+  { path: 'player-unregistration/:id', component: PlayerUnregistrationComponent },
+  { path: 'create-tournaments', component: CreateTournamentComponent},
+  {path:  'launch-tournament/:id', component:LaunchTournamentComponent},
+  {path: 'close-tournament/:id', component:CloseTournamentComponent}
 ];
 

@@ -4,12 +4,8 @@
     padding: 20px;
   }
 
-  ul {
-    list-style-type: none;
-    padding: 0;
-  }
-
-  li {
+  input, button {
+    display: block;
     margin-bottom: 10px;
   }
 
@@ -29,10 +25,12 @@
 </style>
 <div class="container">
   <h1>Desinscription d'un Joueur</h1>
-  <ul>
-    <li *ngFor="let player of registeredPlayer">
-      {{ player.name }} - {{ player.email }}
-      <button (click)="unregisterPlayer(player.id)">Desinscrire</button>
-    </li>
-  </ul>
+  <form (submit)="unregisterPlayer()">
+    <label>Nom:</label>
+    <input type="text" [(ngModel)]="nom" name="nom" required>
+    <label>Prenom:</label>
+    <input type="text" [(ngModel)]="prenom" name="prenom" required>
+    <button type="submit">Désinscrire</button>
+  </form>
 </div>
+

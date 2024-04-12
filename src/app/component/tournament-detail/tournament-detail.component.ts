@@ -4,8 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-tournament-detail',
   standalone: true,
   imports: [],
-  templateUrl: './tournament-detail.component.html',
-  styleUrl: './tournament-detail.component.css'
+  templateUrl: './tournament-detail.component.html'
 })
 export class TournamentDetailComponent {
 

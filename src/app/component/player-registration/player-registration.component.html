@@ -1,5 +1,4 @@
 <style>
-  /* player-registration.component.css */
 
   .container {
     padding: 20px;
@@ -11,7 +10,7 @@
   }
 
   button {
-    background-color: #007bff;
+    background-color: lightseagreen;
     color: #fff;
     border: none;
     padding: 8px 16px;
@@ -20,11 +19,11 @@
   }
 
   button:hover {
-    background-color: #0056b3;
+    background-color: lightseagreen;
   }
 </style>
 <div class="container">
-  <h1>Inscription d'un Joueur</h1>
+  <h1>Inscription</h1>
   <form (submit)="registerPlayer()">
     <label>Nom:</label>
     <input type="text" [(ngModel)]="playerName" name="playerName" required>

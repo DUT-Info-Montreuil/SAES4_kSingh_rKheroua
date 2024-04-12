@@ -13,15 +13,13 @@ import {
   NgbNavItem,
   NgbNavLink
 } from "@ng-bootstrap/ng-bootstrap";
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   imports: [RouterOutlet, RouterLink, RouterLinkActive,
     NgbNavItem, NgbNavLink, NgbNav,
     NgbDropdown, NgbDropdownMenu, NgbDropdownItem, HttpClientModule],
-  standalone: true,
-  styleUrls: ['./app.component.css']
+  standalone: true
 })
 export class AppComponent {
   title = 's4Front';

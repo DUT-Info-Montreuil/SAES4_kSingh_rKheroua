@@ -11,18 +11,20 @@
   }
 
   .tournament-card {
-    background-color: #f9f9f9;
+    background-color: azure;
     border: 1px solid #ddd;
     padding: 15px;
     border-radius: 5px;
+    word-wrap: break-word;
   }
 
   .buttons {
-    margin-top: 10px;
+    margin-top: 20px;
   }
 
   button {
-    background-color: #007bff;
+    margin-top: 10px;
+    background-color: lightseagreen;
     color: #fff;
     border: none;
     padding: 8px 16px;
@@ -32,7 +34,7 @@
   }
 
   button:hover {
-    background-color: #0056b3;
+    background-color: lightseagreen;
   }
 
 </style>
@@ -40,16 +42,19 @@
   <h1>Liste des Tournois</h1>
   <div class="tournament-list">
     <div class="tournament-card" *ngFor="let tournament of tournaments">
+
       <h3>{{ tournament.nom }}</h3>
       <p>Date: {{ tournament.date }}</p>
       <p>Lieu: {{ tournament.lieu }}</p>
       <p>Format: {{ tournament.format }}</p>
       <p>Description: {{ tournament.description }}</p>
       <div class="buttons">
-        <button (click)="register(tournament._id)">Inscription</button>
-        <button (click)="unregister(tournament._id)">Desinscription</button>
-        <button (click)="launch(tournament._id)">Lancer Tournoi</button>
-        <button (click)="close(tournament._id)">Fermer Tournoi</button>
+        <button (click)="register(tournament.id)">Inscription</button>
+        <button (click)="unregister(tournament.id)">Désinscription</button>
+        <button (click)="launch(tournament.id)">Lancer</button>
+        <button (click)="close(tournament.id)">Fermer</button>
+        <button >Détails</button>
+        <!-- Il faudra modifier ici en fonction du status du tournoi -->
       </div>
     </div>
   </div>

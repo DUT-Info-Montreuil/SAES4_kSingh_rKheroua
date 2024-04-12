@@ -1,16 +1,21 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import {Tournament} from "./Tournament";
 
 @Injectable({
   providedIn: 'root'
 })
+
+
+
 export class TournamentApiService {
-  private baseUrl = 'http://127.0.0.1:5000';
+  private baseUrl = 'http://127.0.0.1:5000/api';
 
   constructor(private http: HttpClient) { }
-  createTournament(tournamentData: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/cree`, tournamentData);
+
+  createTournament(tournamentData: Tournament): Observable<any> {
+    return this.http.post(`${this.baseUrl}/tournois/cree`, tournamentData);
   }
 
   // Récupérer tous les tournois
@@ -24,18 +29,18 @@ export class TournamentApiService {
   }
 
   // Inscrire un joueur à un tournoi
-  registerPlayer(tournamentId: string, playerData: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/tournaments/${tournamentId}/register/`, playerData);
+  registerPlayer(playerData: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}/tournaments/joueurs/cree`, playerData);
   }
 
   // Désinscrire un joueur d'un tournoi
-  unregisterPlayer(tournamentId: string, playerId: string): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/tournaments/${tournamentId}/unregister/${playerId}`);
+  unregisterPlayer(tournamentId: string, nom: string,prenom: string): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/tournaments/${tournamentId}/unregister/${nom}`);
   }
 
   // Lancer un tournoi
   launchTournament(tournamentId: string): Observable<any> {
-    return this.http.post(`${this.baseUrl}/tournaments/${tournamentId}/launch`, {});
+    return this.http.post(`${this.baseUrl}/poules/cree/${tournamentId}`,{});
   }
 
   // Fermer un tournoi
