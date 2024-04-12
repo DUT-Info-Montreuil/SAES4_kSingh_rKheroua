@@ -42,6 +42,12 @@ def rechercher_id_joueur(_id):
     return ObjectId(joueur)
 
 
+def rechercher_nom_joueur(_id):
+    joueur = joueurs.find_one({"_id": ObjectId(_id)})
+    nom = joueur["nom"]
+    return nom
+
+
 def modifier_joueur(_id, data):
     joueurs.update_one({"_id": ObjectId(_id)}, {"$set": data})
 

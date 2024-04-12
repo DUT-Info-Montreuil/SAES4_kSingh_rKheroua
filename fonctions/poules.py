@@ -2,7 +2,7 @@ from fonctions.connexion import poules
 from bson import ObjectId
 from fonctions.connexion import tournois
 from fonctions.matchs import creer_matchs_poule
-from fonctions.tournoi import modifier_tournoi
+from fonctions.tournoi import modifier_tournoi, recherche_tournoi
 
 import math
 
@@ -29,7 +29,7 @@ def creer_poules(_id):
         }).inserted_id
         poules_created.append(poule_id)
         modifier_tournoi(_id,{"poules":poules_created})
-        creer_matchs_poule(poule_id)
+        creer_matchs_poule(poule_id,_id)
         
 
     
@@ -43,6 +43,18 @@ def modifier_poule(_id, data):
 
 def supprimer_poule(_id):
     poules.delete_one({"_id": ObjectId(_id)})
+
+
+def rechercher_poule_de_tournoi(_id_tournoi):
+    poule = poules.find()
+    resultat = []
+    for p in poule:
+        if str(p["tournoi"]) == _id_tournoi:
+            resultat.append({
+            "matches": str(p["matches"])
+        })
+    return resultat
+
 
 def dell():
     poules.delete_many({})

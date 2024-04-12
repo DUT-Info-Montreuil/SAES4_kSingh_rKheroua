@@ -1,6 +1,8 @@
 from fonctions.connexion import tournois
 from bson import ObjectId
-
+from fonctions.connexion import poules
+from fonctions.connexion import matchs
+from fonctions.connexion import joueurs
 
 
 def inserer_tournoi( nom, date, nb_tables, duree, format, lieu, description, pwd, salle):
@@ -32,7 +34,7 @@ def modifier_tournoi(_id, data):
 
 def supprimer_joueurs_tournoi(_id, _id_joueur):
     tournois.update_one({"_id": ObjectId(_id)}, {"$pull": {"Joueurs": ObjectId(_id_joueur)}})
-
+    
 
 
 def supprimer_tournoi(_id, pwd):
@@ -41,6 +43,9 @@ def supprimer_tournoi(_id, pwd):
         if tournoi["pwd"] == pwd:
             tournois.delete_one({"_id": ObjectId(_id)})
             print("Vous avez bien supprimé le tournoi", tournoi["nom"])
+            joueurs.delete_many({"Tournois": ObjectId(_id)})
+            poules.delete_many({"tournoi": ObjectId(_id)})
+            matchs.delete_many({"tournoi": ObjectId(_id)})
         else:
             print("Mot de passe incorrect pour supprimer le tournoi")
     else:
