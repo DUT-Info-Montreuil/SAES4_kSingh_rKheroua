@@ -46,12 +46,12 @@ def supprimer_poule(_id):
 
 
 def rechercher_poule_de_tournoi(_id_tournoi):
-    poule = poules.find()
+    poules_tournoi = poules.find({"tournoi": ObjectId(_id_tournoi)})
     resultat = []
-    for p in poule:
-        if str(p["tournoi"]) == _id_tournoi:
-            resultat.append({
-            "matches": str(p["matches"])
+    for poule in poules_tournoi:
+        matches_poule = [str(match) for match in poule.get("matches", [])]
+        resultat.append({
+            "matches": matches_poule
         })
     return resultat
 

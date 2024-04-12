@@ -32,8 +32,10 @@ def creer_matchs_poule(id_poule,_id_tournois):
                 j1 = rechercher_nom_joueur(equipe1_id)
                 j2 = rechercher_nom_joueur(equipe2_id)
                 match_id = creer_match(arbitre="", participant1=j1, participant2=j2,_id_tournoi=_id_tournois)
+                
+                
 
-                poules.update_one({"_id": ObjectId(id_poule)}, {"$addToSet": {"matches": match_id}})
+                poules.update_one({"_id": ObjectId(id_poule)}, {"$addToSet": {"matches": [j1,j2]}})
 
 
 def trouver_match_par_id(_id):
