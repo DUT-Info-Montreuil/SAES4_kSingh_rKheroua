@@ -4,7 +4,6 @@ import { TournamentDetailComponent } from './component/tournament-detail/tournam
 import { PlayerRegistrationComponent } from './component/player-registration/player-registration.component';
 import { PlayerUnregistrationComponent } from './component/player-unregistration/player-unregistration.component';
 import {CreateTournamentComponent} from "./component/create-tournament/create-tournament.component";
-import{LaunchTournamentComponent} from "./component/launch-tournament/launch-tournament.component";
 import{CloseTournamentComponent} from "./component/close-tournament/close-tournament.component";
 
 export const routes: Routes = [
@@ -13,7 +12,6 @@ export const routes: Routes = [
   { path: 'player-registration/:id', component: PlayerRegistrationComponent },
   { path: 'player-unregistration/:id', component: PlayerUnregistrationComponent },
   { path: 'create-tournaments', component: CreateTournamentComponent},
-  {path:  'launch-tournament/:id', component:LaunchTournamentComponent},
   {path: 'close-tournament/:id', component:CloseTournamentComponent}
 ];
 

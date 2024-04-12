@@ -44,11 +44,11 @@ export class TournamentApiService {
   }
 
   // Fermer un tournoi
-  closeTournament(tournamentId: string): Observable<any> {
-    return this.http.post(`${this.baseUrl}/tournaments/${tournamentId}/close`, {});
+  closeTournament(tournamentId: string,pwd: string): Observable<any> {
+    return this.http.post(`${this.baseUrl}/tournaments/${tournamentId}/${pwd}`, {});
   }
 
-  getRegisteredPlayers(tournamentId: string): Observable<any> {
-    return this.http.get(`${this.baseUrl}/tournaments/${tournamentId}/registered-players`);
+  getDetail(tournamentId: string): Observable<any> {
+    return this.http.get(`${this.baseUrl}/poules/rechercher/${tournamentId}`, {})
   }
 }

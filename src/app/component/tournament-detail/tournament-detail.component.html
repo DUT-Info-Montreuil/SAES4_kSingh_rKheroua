@@ -1,1 +1,28 @@
-<p>tournament-detail works!</p>
+<style>
+.container {
+font-family: Avenir;
+padding: 20px;
+}
+
+.matchs-list {
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+grid-gap: 20px;
+}
+
+.poule-card{
+background-color: azure;
+border: 1px solid #ddd;
+padding: 15px;
+border-radius: 5px;
+word-wrap: break-word;
+}
+</style>
+<div class="container">
+  <h1>Details</h1>
+  <div class="matchs-list">
+    <div class="poule-card" *ngFor="let match of matchs">
+      <p>{{ match.matches }}</p>
+    </div>
+  </div>
+</div>

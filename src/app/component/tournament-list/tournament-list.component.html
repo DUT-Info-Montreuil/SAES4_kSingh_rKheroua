@@ -42,20 +42,20 @@
   <h1>Liste des Tournois</h1>
   <div class="tournament-list">
     <div class="tournament-card" *ngFor="let tournament of tournaments">
-
       <h3>{{ tournament.nom }}</h3>
       <p>Date: {{ tournament.date }}</p>
       <p>Lieu: {{ tournament.lieu }}</p>
       <p>Format: {{ tournament.format }}</p>
       <p>Description: {{ tournament.description }}</p>
       <div class="buttons">
-        <button (click)="register(tournament.id)">Inscription</button>
-        <button (click)="unregister(tournament.id)">Désinscription</button>
-        <button (click)="launch(tournament.id)">Lancer</button>
-        <button (click)="close(tournament.id)">Fermer</button>
-        <button >Détails</button>
+          <button (click)="register(tournament.id)">Inscription</button>
+          <button (click)="unregister(tournament.id)">Désinscription</button>
+          <button (click)="launch(tournament.id)">Lancer</button>
+          <button (click)="close(tournament.id)">Fermer</button>
+          <button (click)="detail(tournament.id)">Détails</button>
+        </div>
+
         <!-- Il faudra modifier ici en fonction du status du tournoi -->
       </div>
     </div>
   </div>
-</div>

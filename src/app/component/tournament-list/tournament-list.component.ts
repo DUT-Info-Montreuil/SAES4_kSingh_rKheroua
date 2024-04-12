@@ -48,6 +48,9 @@ export class TournamentListComponent implements OnInit {
   }
 
   close(tournamentId: string) {
-
+  this.router.navigate(['close-tournament/',tournamentId]);
+  }
+  detail(tournamentId: string) {
+    this.router.navigate(['tournament/', tournamentId]);
   }
 }
