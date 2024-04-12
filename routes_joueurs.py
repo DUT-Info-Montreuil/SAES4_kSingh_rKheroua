@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-from fonctions.joueurs import inserer_joueur, recherche_joueur, modifier_joueur, supprimer_joueur, dell
+from fonctions.joueurs import inserer_joueur, recherche_joueur, modifier_joueur, supprimer_joueur, dell, desinscris_joueur
 from bson import json_util
 
 joueur_bp = Blueprint('joueur_bp', __name__)
@@ -44,6 +44,14 @@ def supprimer_un_joueur(_id):
     else:
         return jsonify({"message": "Joueur supprimé avec succès"})
     
+
+
+@joueur_bp.route('/desinscrire/<string:nom>/<string:prenom>/<string:_id>', methods=['DELETE'])
+def desinscrire_un_joueur(nom,prenom,_id):
+    desinscris_joueur(nom,prenom,_id)
+    return jsonify({"message": "Joueur supprimer avec succes"})
+
+
 
 @joueur_bp.route('/del', methods=['GET'])
 def modifier_un_joueu():

@@ -30,6 +30,10 @@ def recherche_tournoi(_id):
 def modifier_tournoi(_id, data):
     tournois.update_one({"_id": ObjectId(_id)}, {"$set": data})
 
+def supprimer_joueurs_tournoi(_id, _id_joueur):
+    tournois.update_one({"_id": ObjectId(_id)}, {"$pull": {"Joueurs": ObjectId(_id_joueur)}})
+
+
 
 def supprimer_tournoi(_id, pwd):
     tournoi = tournois.find_one({"_id": ObjectId(_id)})

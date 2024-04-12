@@ -1,6 +1,6 @@
 from fonctions.connexion import joueurs
 from bson import ObjectId
-from fonctions.tournoi import rejoindre_tournoi
+from fonctions.tournoi import rejoindre_tournoi, supprimer_joueurs_tournoi
 
 
 
@@ -46,10 +46,14 @@ def modifier_joueur(_id, data):
     joueurs.update_one({"_id": ObjectId(_id)}, {"$set": data})
 
 
+def desinscris_joueur(nom,prenom,_id_tournoi):
+    joueur = joueurs.find_one({"nom": nom, "prenom": prenom})
+    id_joueur = joueur["_id"]
+    supprimer_joueurs_tournoi(_id_tournoi,id_joueur)
+    print(id_joueur)
+    supprimer_joueur(id_joueur)
 
-
-
-
+    
 def supprimer_joueur(_id):
     joueurs.delete_one({"_id": ObjectId(_id)})
     
