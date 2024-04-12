@@ -46,6 +46,10 @@ def modifier_joueur(_id, data):
     joueurs.update_one({"_id": ObjectId(_id)}, {"$set": data})
 
 
+
+
+
+
 def supprimer_joueur(_id):
     joueurs.delete_one({"_id": ObjectId(_id)})
     

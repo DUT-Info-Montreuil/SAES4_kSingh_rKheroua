@@ -8,6 +8,7 @@ import math
 
 def creer_poules(_id):
     tournoi = tournois.find_one({"_id": ObjectId(_id)})
+    modifier_tournoi(_id,{"status":"fermé"})
     joueurs_list = tournoi.get("Joueurs", [])  # Récupérer les joueurs du tournoi
     nb_joueurs = len(joueurs_list)
     nb_poules = math.ceil(nb_joueurs / 4)  # Calculer le nombre de poules nécessaires

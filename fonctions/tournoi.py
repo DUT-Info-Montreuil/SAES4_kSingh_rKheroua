@@ -16,7 +16,8 @@ def inserer_tournoi( nom, date, nb_tables, duree, format, lieu, description, pwd
         "Joueurs": [],
         "matches": [],
         "poules": [],
-        "Salle": salle
+        "Salle": salle,
+        "status": "ouvert"
     }
     )
 
